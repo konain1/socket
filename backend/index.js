@@ -20,6 +20,7 @@ io.on('connection',(socket)=>{
 
     socket.on('chatroom',(msg)=>{
         console.log('typing '+msg)
+        
     })
     socket.on('disconnect', () => {
         console.log('user disconnected');
