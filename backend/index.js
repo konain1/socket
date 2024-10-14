@@ -15,13 +15,18 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/index.html'));
   });
 
+
+//   io.on('connection', (socket) => {
+//     socket.broadcast.emit('hi');
+//   });
+
 io.on('connection',(socket)=>{
     console.log('a user is connected ',socket.id)
+    socket.on('chatroom', (msg) => {
+        io.emit('chatroom', msg);
+      });
 
-    socket.on('chatroom',(msg)=>{
-        console.log('typing '+msg)
-        
-    })
+    
     socket.on('disconnect', () => {
         console.log('user disconnected');
       });
